@@ -1,11 +1,20 @@
 {
   "name": "shopping-mart",
   "version": "1.0.0",
-  "description": "This is a shopping application created using flask",
+  "description": "This is a flask application where you can purchase and sell purchased items after registering and logging yourself",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahulbaran/Shopping-Mart.git"
+  },
+  "keywords": [],
   "author": "Rahul Baran",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rahulbaran/Shopping-Mart/issues"
+  },
+  "homepage": "https://github.com/Rahulbaran/Shopping-Mart#readme"
 }

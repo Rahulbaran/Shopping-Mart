@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author name" content="Rahul Kumar">
+    <meta name="copyright" content="reserved">
+    <meta name="contact" content="rahulkumar109422@gmail.com">
+    <meta name="description" content="A Shopping Mart app created using flask">
+    <meta name="keywords" content="Shopping Mart, Flask">
+    <title>{{title}}</title>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- custom style sheet -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/layout.min.css')}}">
+
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha512-g06pohSHYbSOHKq8tdDGXckE6C23Yt30xlTFDhrO0OcO/bNO2MWXb63oqU/Y23GDMNOon100eGHxZPBnT4QgMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- favicon of the app -->
+    <link rel="shortcut icon" href="{{url_for('static',filename='Images/shopping-cart logo.png')}}" type="image/png">
+
+    <!-- custom script file -->
+    <script defer src="../static/js/layout.js"></script>
+
+    <!-- Block for adding stylesheets in the templates -->
+    {% block stylesheets %}
+    {% endblock %}
+
+</head>
+<body>
+
+    <!-- header of the page -->
+    <header class="header">
+
+        <a href="/home" class="logo__link">
+            <img src="../static/Images/shopping-cart logo.png" alt="Company Logo" class="logo">
+        </a>
+
+        <nav class="navigation">
+
+            <ul class="navigation__primary">
+                <li><a href="{{url_for('home')}}" class="navigation__link">Home</a></li>
+                <li><a href="{{url_for('market')}}" class="navigation__link">Market</a></li>
+            </ul>
+
+            <ul class="navigation__secondary">
+                <li><a href="{{url_for('register')}}" class="navigation__link">Register</a></li>
+                <li><a href="{{url_for('login')}}" class="navigation__link">Login</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- block for body content -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- block for script files -->
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>
