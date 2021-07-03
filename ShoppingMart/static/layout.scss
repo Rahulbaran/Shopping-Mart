@@ -1,0 +1,130 @@
+*,
+*::After,
+*::before {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+$font-primary:'Poppins',sans-serif;
+$font-secondary:'Roboto',sans-serif;
+$font-backup : 'KoHo',sans-serif;
+$color-white:#fff;
+@mixin flex($just,$align,$dir:row){
+    display:flex;
+    justify-content:$just;
+    align-items:$align;
+    flex-direction:$dir;
+}
+
+
+body {
+    font:400 1em/1.5 $font-secondary;
+}
+
+/*!--------header section of the page------- */
+.header {
+    padding:.6em 1em;
+    font-family:$font-primary;
+    display:grid;
+    grid-template-columns:1fr 5fr;
+    align-items:center;
+    background-color:rgb(240, 242, 255);
+    box-shadow:0 2px 3px rgba(0,0,0,.3);
+}
+.logo__link {
+    text-decoration:none;
+    display:inline-block;
+}
+.logo {
+    height:2.5em;
+    display:block;  
+    margin-left:.5em;
+    margin-right:.5em;
+    filter:drop-shadow(2px 2px 1px rgba(0,0,0,.5));
+}
+
+/*---------- navigation---------- */
+.navigation {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    ul {
+        list-style-type:none;
+
+        li {
+            margin:.4em;
+        }
+    }
+    &__primary {
+        @include flex(flex-start,center);
+    }
+    &__secondary {
+        @include flex(flex-end,center);
+    }
+    &__link {
+        display:inline-block;
+        padding:.3em .4em;
+        text-decoration:none;
+        font-size:.8em;
+        color:rgb(237, 58, 88);
+        font-weight:600;
+        text-transform: uppercase;
+
+        &:hover,&:focus {
+            text-decoration:underline 2px;
+            opacity:.75;
+        }
+    }
+}
+
+@media screen and (min-width:720px) {
+    body {
+        font-size:1.15em;
+    }
+    nav a {
+        padding:.4em .5em;
+    }
+}
+@media screen and (min-width:1200px) {
+    body {
+        font-size:1.25em;
+    }
+}
+
+
+
+
+// message flashing
+.message__container {
+    padding:.4em;
+    @include flex(center,center);
+    font-size:1.05em;
+}
+.info__container {
+    background-color: rgb(198, 255, 205);
+    color:green;
+}
+.warning__container {
+    background-color: rgb(255, 196, 196);
+    color:rgb(128, 0, 0);
+}
+.msg__remove__btn {
+    font-size:1.1em;
+    outline:none;
+    border:none;
+    background:transparent;
+    margin-left:1em;
+
+    &:hover,&:focus {
+        font-weight:700;
+        cursor:pointer;
+    }
+}
+.warning__btn {
+    color:rgb(128, 0, 0);
+}
+.info__btn {
+    color:green;
+}

@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.min.css')}}">
+{% endblock %}
+
+{% block content %}
+<main class="login--main">
+
+    <div class="gradient__section"></div>
+
+    <form method="post" class="login__form" autocomplete="off">
+        {{form.hidden_tag()}}
+
+        <legend>Login Yourself</legend>
+
+        <div class="form__group">
+            {{form.email.label()}}
+            {% if form.email.errors %}
+                {{form.email(class="field__error")}}
+                {% for error in form.email.errors %}
+                    <span class="error__msg">{{error}}</span>
+                {% endfor %}
+            {% else %}
+                {{form.email(placeholder='enter your email address')}}
+            {% endif %}
+        </div>
+
+        <div class="form__group">
+            {{form.password.label()}}
+            {% if form.password.errors %}
+                {{form.password(class="field__error")}}
+                {% for error in form.password.errors %}
+                    <span class="error__msg">{{error}}</span>
+                {% endfor %}
+            {% else %}
+                {{form.password(placeholder="enter your password")}}
+            {% endif %}
+        </div>
+
+        <div class="form__remember">
+            {{form.remember()}}
+            {{form.remember.label()}}
+        </div>
+
+        <div class="form__submit">
+            {{form.submit()}}
+        </div>
+
+        <!-- go to register section link -->
+        <div class="register__section">
+            <p>Have not registered yet, <a href="/register" class="register">Register here</a></p>
+        </div>
+
+    </form>
+</main>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
