@@ -1,8 +1,27 @@
 {% extends 'layout.html' %}
 {% block stylesheets %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/market.min.css')}}">
 {% endblock %}
 
 {% block content %}
+
+    <main class="market--main">
+        {% for it in items %}
+        <div class="product__container">
+
+            <p class="product__name">{{it.item}}</p>
+            <p class="product__id">{{it.barCode}}</p>
+            <p class="product__price">{{it.amount}}/-</p>
+            <button class="product__info__btn product__btn" type="button">Info</button>
+
+            <form method="post" class="product__purchase" action="{{url_for('purchase_product',product_id=it.barCode)}}">
+                <input type="submit" value="Purchase" class="product__purchase__btn product__btn"> 
+            </form>
+
+        </div>
+        {% endfor %}
+    </main>
+
 {% endblock %}
 
 {% block scripts %}

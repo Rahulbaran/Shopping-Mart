@@ -63,12 +63,13 @@ class LoginForm(FlaskForm):
 
 
 
-# CLASS TO CREATE REGISTER FORM
+# CLASS TO CREATE UPDATE FORM
 class UpdateForm(FlaskForm):
     username = StringField(label = 'Username', validators = [InputRequired(), Length(min = 5,max = 50, 
                                                 message='username must be 5 to 50 characters long')])
     email = StringField(label = 'Email Address', validators = [InputRequired(), Length(min = 15, max = 60, 
                                                  message = 'email must have atleast 15 characters'), Email(message = 'email address is not valid')])
+    picture = FileField(label = "Upload your picture", validators = [FileAllowed(['gif','jpeg','jpg','png','svg'],message = 'file in gif, jpeg, jpg, png & svg formats are only allowed.')])
     submit = SubmitField(label = 'Update')
 
 
@@ -93,3 +94,35 @@ class UpdateForm(FlaskForm):
             if user:
                 raise ValidationError('email is already taken')
 
+
+
+
+# reset password request form
+class ResetRequestForm(FlaskForm):
+    email = StringField(label = "Email Address",validators = [InputRequired(), Length(min = 15, max = 60, 
+                                                 message = 'email must have atleast 15 characters'), Email(message = 'email address is not valid')])
+    submit = SubmitField('Request Password Reset')
+
+    def validate_email(self,email):
+        user = User.query.filter_by(email = email.data).first()
+        if user is None:
+            raise ValidationError('There is no user with that email')
+
+
+# reset password form
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField(label = 'Password', validators = [InputRequired(), Length(min = 8, max = 50, 
+                                                  message = 'password must be atleast 8 characters long')])
+    reenter_password = PasswordField(label = 'Re-enter Password', validators = [InputRequired(), Length(min = 8, max = 50, 
+                                                  message = 'password must be atleast 8 characters long'), 
+                                                  EqualTo('password', message = 'must be similar to password')])
+    submit = SubmitField(label = 'Reset Password')
+
+    def validate_password(self,password):
+        specialChar = '!@#$%^&*()_-+=|\\}]{[?/:;"\'><.,~`'
+        tracker = 0
+        for char in password.data:
+            if char in specialChar:
+                tracker+=1
+        if tracker == 0:
+            raise ValidationError('password must have atleast one special character')

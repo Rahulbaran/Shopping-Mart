@@ -1,4 +1,4 @@
-.login--main {
+.request--reset--main {
   height: calc(100vh - 70px);
   display: -ms-grid;
   display: grid;
@@ -16,7 +16,7 @@
   background: linear-gradient(to right, #f5af19, #f12711);
 }
 
-.login__form {
+.request__reset__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,7 +34,7 @@
   position: relative;
 }
 
-.login__form::after, .login__form::before {
+.request__reset__form::after, .request__reset__form::before {
   content: '';
   position: absolute;
   width: 100px;
@@ -43,7 +43,7 @@
   z-index: -1;
 }
 
-.login__form::after {
+.request__reset__form::after {
   top: -10%;
   left: 15%;
   background: #b92b27;
@@ -51,7 +51,7 @@
   background: linear-gradient(to right, #009fff, #ec2f4b);
 }
 
-.login__form::before {
+.request__reset__form::before {
   top: -10%;
   left: 70%;
   background: #f12711;
@@ -59,7 +59,7 @@
   background: linear-gradient(to right, #f5af19, #f12711);
 }
 
-.login__form legend {
+.request__reset__form legend {
   margin-bottom: 1em;
   border-bottom: 3px solid black;
   font-size: 200%;
@@ -67,9 +67,8 @@
   font-weight: 700;
 }
 
-.login__form .form__group,
-.login__form .form__submit,
-.login__form .register__section {
+.request__reset__form .form__group,
+.request__reset__form .form__submit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,12 +86,12 @@
   width: 100%;
 }
 
-.login__form .form__group label {
+.request__reset__form .form__group label {
   font-weight: 600;
   font-size: 1.1em;
 }
 
-.login__form .form__group input {
+.request__reset__form .form__group input {
   width: 100%;
   padding: .6em;
   font-size: 1em;
@@ -106,12 +105,12 @@
   transition: transform 250ms, -webkit-transform 250ms;
 }
 
-.login__form .form__group input:active {
+.request__reset__form .form__group input:active {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
 }
 
-.login__form .form__submit input {
+.request__reset__form .form__submit input {
   margin-top: 1.2em;
   padding: .7em 2.2em;
   background-color: #6100FF;
@@ -129,7 +128,7 @@
   letter-spacing: .5px;
 }
 
-.login__form .form__submit input:hover, .login__form .form__submit input:focus {
+.request__reset__form .form__submit input:hover, .request__reset__form .form__submit input:focus {
   cursor: pointer;
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
@@ -137,70 +136,22 @@
           box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
-.login__form .form__submit input:active {
+.request__reset__form .form__submit input:active {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
   -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.login__form .register__section p {
-  font-size: 1.3em;
-  font-weight: 700;
-}
-
-.login__form .register__section p a {
-  text-decoration: none;
-  color: #6100FF;
-}
-
-.login__form .register__section p a:hover, .login__form .register__section p a:focus {
-  -webkit-text-decoration: 1px underline currentColor;
-          text-decoration: 1px underline currentColor;
-}
-
-.form__remember {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  width: 100%;
-}
-
-.form__remember label {
-  font-weight: 600;
-  font-size: 1.1em;
-  margin-left: .5em;
-}
-
-.Forget__password {
-  font-size: 1.1em;
-  color: #0059ff;
-  text-decoration: none;
-  width: 100%;
-  font-weight: 600;
-  margin-top: .2em;
-  display: inline-block;
-}
-
-.Forget__password:hover, .Forget__password:focus {
-  text-decoration: underline;
-}
-
 @media (min-width: 840px) {
-  .login--main {
+  .request--reset--main {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
   .gradient__section {
     display: block;
   }
-  .login__form {
+  .request__reset__form {
     padding: 3em 4em;
   }
 }

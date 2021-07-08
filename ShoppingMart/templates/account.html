@@ -8,7 +8,7 @@
 
         <section class="user__details__container">
             <div class="user__profile__container">
-                <img src="../static/Images/default.png" alt="User Profile" class="user__profile__image">
+                <img src="{{picture}}" alt="User Profile" class="user__profile__image">
             </div>
             <div class="user__details">
                 <button type="button" class="user__profile__edit__btn" title="edit profile" aria-hidden="true">X</button>
@@ -30,16 +30,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for item in allItems %}
                     <tr>
-                        <td>iPhoneX</td>
-                        <td>1000</td>
-                        <td>27th Jan 2021</td>
+                        <td>{{item.itemname}}</td>
+                        <td>{{item.amount}}/-</td>
+                        <td>{{item.date_bought.strftime('%d/%m/%Y')}}</td>
                         <td>
-                            <form action="" method="POST">
+                            <form action="{{url_for('sell_product',product_id=item.barCode)}}" method="POST">
                                 <input type="submit" value="Sell">
                             </form>
                         </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
@@ -81,6 +83,15 @@
                 {% endif %}
             </div>
 
+            <div class="form__pic__group"> 
+                {{form.picture.label()}}
+                {{form.picture()}}
+                {% if form.picture.errors %}
+                    {% for error in form.picture.errors %}
+                        <span class="error__msg">{{error}}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
             <div class="form__submit">
                 {{form.submit()}}
             </div>

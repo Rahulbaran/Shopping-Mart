@@ -1,5 +1,6 @@
 from datetime import datetime
-from ShoppingMart import db, login_manager
+from ShoppingMart import db, login_manager, app
+from itsdangerous import  TimedJSONWebSignatureSerializer as Serializer
 # from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -18,8 +19,26 @@ class User(db.Model):
     image_file = db.Column(db.String, nullable = False, default = 'default.png')
     items = db.relationship('UserItems', backref = 'customer', lazy = True)
 
+    #generate token
+    def get_reset_token(self,expire_time=600):
+        s = Serializer(app.config['SECRET_KEY'],expire_time)
+        return s.dumps({'user_id':self.id}).decode('utf-8')
+        
+
+    # verify token
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
+
+
     def __repr__(self):
         return f'User({self.username},{self.email}, {self.totalBudget})'
+
 
     # methods necessary to work with flask_login package
     def is_authenticated(self):
@@ -38,6 +57,7 @@ class UserItems(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     itemname = db.Column(db.String, nullable = False)
     amount = db.Column(db.Integer, nullable = False)
+    barCode = db.Column(db.Integer, nullable = False)
     date_bought = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
@@ -49,6 +69,7 @@ class Items(db.Model):
     __tablename__ = 'items'
     id = db.Column(db.Integer, primary_key = True)
     item = db.Column(db.String, nullable = False)
+    barCode = db.Column(db.Integer,nullable=False,unique=True)
     amount = db.Column(db.Integer, nullable = False)
     info = db.Column(db.String, nullable = False)
 

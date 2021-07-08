@@ -1,4 +1,4 @@
-.login--main {
+.reset--token--main {
     height:calc(100vh - 70px);
     display:grid;
     grid-template-columns:1fr;
@@ -10,7 +10,7 @@
     display:none;
     background: linear-gradient(to right, #f5af19, #f12711); 
 }
-.login__form {
+.reset__token__form {
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -48,8 +48,7 @@
         
     }
     .form__group,
-    .form__submit ,
-    .register__section {
+    .form__submit {
         display:flex;
         flex-direction:column;
         align-items:flex-start;
@@ -100,56 +99,18 @@
             box-shadow:5px 5px 10px rgba(0,0,0,.3);
         }    
     }
-    .register__section p {
-        font-size:1.3em;
-        font-weight:700;
-        a {
-            text-decoration:none;
-            color:#6100FF;
-
-            &:hover ,&:focus {
-                text-decoration:1px underline currentColor;
-            }
-        }
-    }
-}
-.form__remember {
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    width:100%;
-
-    label {
-        font-weight:600;
-        font-size:1.1em;
-        margin-left:.5em;
-    }
-}
-
-.Forget__password {
-    font-size:1.1em;
-    color:rgb(0, 89, 255);
-    text-decoration:none;
-    width:100%;
-    font-weight:600;
-    margin-top:.2em;
-    display:inline-block;
-
-    &:hover,&:focus {
-        text-decoration:underline;
-    }
 }
 
 
 
 @media (min-width:840px) {
-    .login--main {
+    .reset--token--main {
         grid-template-columns:repeat(2,1fr);
     }
     .gradient__section {
         display:block;
     }
-    .login__form {
+    .reset__token__form {
         padding:3em 4em;
     }
 }

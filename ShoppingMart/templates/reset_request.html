@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/reset_request.min.css')}}">
+{% endblock %}
+{% block content %}
+
+<main class="request--reset--main">
+
+    <div class="gradient__section"></div>
+
+    <form method="post" class="request__reset__form" autocomplete="off">
+        {{form.hidden_tag()}}
+
+        <legend>Request Reset</legend>
+
+        <div class="form__group">
+            {{form.email.label()}}
+            {% if form.email.errors %}
+                {{form.email(class="field__error")}}
+                {% for error in form.email.errors %}
+                    <span class="error__msg">{{error}}</span>
+                {% endfor %}
+            {% else %}
+                {{form.email(placeholder='enter your email address')}}
+            {% endif %}
+        </div>
+
+        <div class="form__submit">
+            {{form.submit()}}
+        </div>
+
+    </form>
+
+</main>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

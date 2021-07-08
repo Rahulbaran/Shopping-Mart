@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/reset_token.min.css')}}">
+{% endblock %}
+{% block content %}
+
+<main class="reset--token--main">
+
+    <div class="gradient__section"></div>
+
+    <form method="post" class="reset__token__form" autocomplete="off">
+        {{form.hidden_tag()}}
+
+        <legend>Reset Password</legend>
+
+        <div class="form__group">
+            {{form.password.label()}}
+            {% if form.password.errors %}
+                {{form.password(class="field__error")}}
+                {% for error in form.password.errors %}
+                    <span class="error__msg">{{error}}</span>
+                {% endfor %}
+            {% else %}
+                {{form.password(placeholder="enter a password")}}
+            {% endif %}
+        </div>
+
+        <div class="form__group">
+            {{form.reenter_password.label()}}
+            {% if form.reenter_password.errors %}
+                {{form.reenter_password(class="field__error")}}
+                {% for error in form.reenter_password.errors %}
+                    <span class="error__msg">{{error}}</span>
+                {% endfor %}
+            {% else %}
+            {{form.reenter_password(placeholder="re-enter the password")}}
+            {% endif %}
+        </div>
+
+        <div class="form__submit">
+            {{form.submit()}}
+        </div>
+
+    </form>
+
+</main>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

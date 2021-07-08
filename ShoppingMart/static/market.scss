@@ -1,0 +1,54 @@
+.market--main {
+    width:80%;
+    min-width:300px;
+    margin:0 auto;
+    margin-top:2em;
+    font-family:'Poppins',sans-serif;
+}
+.product {
+    &__container{
+        width:100%;
+        background-color:#fff;
+        border-radius:5px;
+        box-shadow:0 5px 10px rgba(0,0,0,.2);
+        padding:.8em 1em;
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        justify-content: flex-start;
+        align-items:center;
+        margin-bottom:1em;
+    }
+    &__name {
+        font-weight:600;
+        font-size:1.1em;
+    }
+    &__btn {
+        font-family:'Poppins',sans-serif;
+        font-size:.9em;
+        font-weight:600;
+        padding:.5em 1.4em;
+        border:none;
+        outline:none;
+        border-radius:7px;
+        box-shadow:3px 3px 5px rgba(0,0,0,.15);
+
+        &:hover,&:focus {     
+            cursor:pointer;
+            opacity:.9;
+        }
+    }
+    &__info__btn {
+        background-color:rgb(32, 114, 221);
+        color:#fff;
+        width:6em;
+    }
+    &__purchase__btn {
+        background-color:rgb(252, 237, 29);
+    }
+}
+
+@media screen and (min-width:720px) {
+    .product__container {
+        grid-template-columns:repeat(5,1fr);
+    }
+}
